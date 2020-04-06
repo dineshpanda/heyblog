@@ -1,0 +1,26 @@
+<h1>
+  Edit png #<%= @png.id %>
+</h1>
+
+<hr>
+
+<form action="/update_png/<%= @png.id %>" method="post">
+
+  <div class="form-group">
+    <label for="photo_id">
+      Photo
+    </label>
+
+    <input type="text" id="photo_id" name="photo_id" class="form-control" value="<%= @png.photo_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update png
+  </button>
+</form>
+
+<hr>
+
+<a href="/pngs">
+  Go back
+</a>
