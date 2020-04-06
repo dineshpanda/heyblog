@@ -1,0 +1,45 @@
+<% if @photo.present? %>
+  <% if @photo.errors.any? %>
+    <% @photo.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new photo
+</h1>
+
+
+<hr>
+
+<form action="/create_photo" method="post">
+
+  <div class="form-group">
+    <label for="comment_id">
+      Comment
+    </label>
+
+    <%= select_tag(:comment_id, options_from_collection_for_select(Comment.all, :id, :article_id, @photo.comment_id), :class => "form-control") %>
+  </div>
+
+  <div class="form-check">
+    <input type="hidden" value="0" name="public_visibility">
+    <input id="public_visibility" class="form-check-input" name="public_visibility" type="checkbox" <%= "checked" if @photo.public_visibility %>>
+    <label for="public_visibility" class="form-check-label">
+      Public visibility
+    </label>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create photo
+  </button>
+</form>
+
+<hr>
+
+<a href="/photos">
+  Go back
+</a>
