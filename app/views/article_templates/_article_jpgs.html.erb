@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Jpgs
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @article.jpgs.each do |jpg| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/jpgs/<%= jpg.id %>">
+          <%= jpg.photo_id %>
+        </a>
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>
