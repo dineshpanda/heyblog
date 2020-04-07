@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def index
     @q = Article.ransack(params[:q])
-    @articles = @q.result(:distinct => true).includes(:comments).page(params[:page]).per(10)
+    @articles = @q.result(:distinct => true).includes(:comments, :jpgs, :photos).page(params[:page]).per(10)
 
     render("article_templates/index.html.erb")
   end
@@ -23,6 +23,10 @@ class ArticlesController < ApplicationController
     @article = Article.new
 
     @article.title = params.fetch("title")
+    @article.content5 = params.fetch("content5")
+    @article.published = params.fetch("published")
+    @article.publish_date = params.fetch("publish_date")
+    @article.publish_time = params.fetch("publish_time")
 
     if @article.valid?
       @article.save
@@ -43,6 +47,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params.fetch("id_to_modify"))
 
     @article.title = params.fetch("title")
+    @article.content5 = params.fetch("content5")
+    @article.published = params.fetch("published")
+    @article.publish_date = params.fetch("publish_date")
+    @article.publish_time = params.fetch("publish_time")
 
     if @article.valid?
       @article.save
