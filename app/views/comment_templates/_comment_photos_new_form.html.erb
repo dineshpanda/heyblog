@@ -1,0 +1,15 @@
+<form action="/create_photo_from_comment" method="post">
+
+  <input type="hidden" name="comment_id" value="<%= @comment.id %>">
+
+  <div class="form-group">
+    <label for="public_visibility">
+      Public visibility
+    </label>
+    <input id="public_visibility" class="form-check-input" name="public_visibility" type="checkbox" <%= "checked" if @photo.public_visibility %>>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create photo
+  </button>
+</form>
