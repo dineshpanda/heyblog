@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
   def index
     @q = Comment.ransack(params[:q])
-    @comments = @q.result(:distinct => true).includes(:article).page(params[:page]).per(10)
+    @comments = @q.result(:distinct => true).includes(:article, :photos).page(params[:page]).per(10)
 
     render("comment_templates/index.html.erb")
   end
 
   def show
+    @photo = Photo.new
     @comment = Comment.find(params.fetch("id_to_display"))
 
     render("comment_templates/show.html.erb")
@@ -22,6 +23,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
 
     @comment.article_id = params.fetch("article_id")
+    @comment.auto_removal_date = params.fetch("auto_removal_date")
 
     if @comment.valid?
       @comment.save
@@ -36,6 +38,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
 
     @comment.article_id = params.fetch("article_id")
+    @comment.auto_removal_date = params.fetch("auto_removal_date")
 
     if @comment.valid?
       @comment.save
@@ -56,6 +59,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params.fetch("id_to_modify"))
 
     @comment.article_id = params.fetch("article_id")
+    @comment.auto_removal_date = params.fetch("auto_removal_date")
 
     if @comment.valid?
       @comment.save

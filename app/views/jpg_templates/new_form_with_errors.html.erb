@@ -1,0 +1,37 @@
+<% if @jpg.present? %>
+  <% if @jpg.errors.any? %>
+    <% @jpg.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new jpg
+</h1>
+
+
+<hr>
+
+<form action="/create_jpg" method="post">
+
+  <div class="form-group">
+    <label for="photo_id">
+      Photo
+    </label>
+
+    <%= select_tag(:photo_id, options_from_collection_for_select(Photo.all, :id, :comment_id, @jpg.photo_id), :class => "form-control") %>
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create jpg
+  </button>
+</form>
+
+<hr>
+
+<a href="/jpgs">
+  Go back
+</a>
