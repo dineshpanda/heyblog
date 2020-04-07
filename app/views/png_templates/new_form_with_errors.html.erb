@@ -1,0 +1,37 @@
+<% if @png.present? %>
+  <% if @png.errors.any? %>
+    <% @png.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new png
+</h1>
+
+
+<hr>
+
+<form action="/create_png" method="post">
+
+  <div class="form-group">
+    <label for="photo_id">
+      Photo
+    </label>
+
+    <input type="text" id="photo_id" name="photo_id" class="form-control" value="<%= @png.photo_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create png
+  </button>
+</form>
+
+<hr>
+
+<a href="/pngs">
+  Go back
+</a>
