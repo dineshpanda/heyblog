@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Jpgs
+
+    <a data-toggle="collapse" href="#photo_jpgs_new_form">
+      Add jpg
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @photo.jpgs.each do |jpg| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/jpgs/<%= jpg.id %>">
+          <%= jpg.photo_id %>
+        </a>
+
+        <a href="/delete_jpg_from_photo/<%= jpg.id %>">
+          Delete
+        </a>
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="photo_jpgs_new_form">
+        <%= render partial: "photo_templates/photo_jpgs_new_form" %>
+      </div>
+    </div>
+
+  </ul>
+</div>

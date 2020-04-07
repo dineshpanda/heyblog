@@ -1,0 +1,85 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All jpgs
+    </h1>
+
+    <a href="/jpgs/new" class="btn btn-block btn-outline-secondary">
+      Add a new jpg
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-3">
+    <%= render partial: "jpg_templates/jpgs_search_form" %>
+  </div>
+</div>
+
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Photo
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @jpgs.each do |jpg| %>
+      <tr>
+        <td>
+          <%= jpg.id %>
+        </td>
+
+        <td>
+          <% if jpg.photo.present? %>
+            <a href="/photos/<%= jpg.photo.id %>">
+              <%= jpg.photo.comment_id %>
+            </a>
+          <% end %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(jpg.created_at) %> ago
+        </td>
+
+        <td>
+          <%= time_ago_in_words(jpg.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/jpgs/<%= jpg.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <%= paginate @jpgs, theme: "twitter-bootstrap-4" %>
+      </div>
+    </div>
+
+  </div>
+</div>
