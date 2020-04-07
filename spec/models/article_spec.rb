@@ -10,9 +10,13 @@ RSpec.describe Article, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:photos) }
+
+    it { should have_many(:jpgs) }
+
     end
 
     describe "Validations" do
-      
+
     end
 end
