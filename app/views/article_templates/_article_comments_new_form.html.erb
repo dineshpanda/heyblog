@@ -2,6 +2,14 @@
 
   <input type="hidden" name="article_id" value="<%= @article.id %>">
 
+  <div class="form-group">
+    <label for="auto_removal_date">
+      Auto removal date
+    </label>
+
+    <input type="text" id="auto_removal_date" name="auto_removal_date" class="form-control" value="<%= @comment.auto_removal_date %>">
+  </div>
+
   <button class="btn btn-block btn-outline-secondary">
     Create comment
   </button>

@@ -4,6 +4,8 @@ RSpec.describe Comment, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:photos) }
+
     it { should belong_to(:article) }
 
     end
@@ -13,6 +15,6 @@ RSpec.describe Comment, type: :model do
     end
 
     describe "Validations" do
-      
+
     end
 end
