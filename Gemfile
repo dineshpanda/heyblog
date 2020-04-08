@@ -49,18 +49,32 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "draft_generators", git: "https://github.com/firstdraft/draft_generators.git"
+gem "graphiti"
+gem "graphiti-rails"
+gem "responders"
+gem "rspec-rails"
+gem "shoulda-matchers"
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+gem "vandal_ui"
+gem "web_git", github: "firstdraft/web_git"
+
+group :development, :test do
+  gem "factory_bot_rails"
+  gem "faker"
+  gem "graphiti_spec_helpers"
+end
+
+group :test do
+  gem "database_cleaner"
+end
 gem "activeadmin", "1.2.1"
 gem "activerecord-import"
 gem "bootstrap3-datetimepicker-rails", "~> 4.17.43"
 gem "bootstrap4-kaminari-views"
-gem "draft_generators", git: "https://github.com/firstdraft/draft_generators.git"
 gem "kaminari"
 gem "momentjs-rails", ">= 2.9.0"
 gem "ransack"
 gem "rollbar"
-gem "rspec-rails"
 gem "seed_dump", git: "https://github.com/firstdraft/seed_dump.git"
-gem "shoulda-matchers"
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "wdm" if Gem.win_platform?
-gem "web_git", github: "firstdraft/web_git"
